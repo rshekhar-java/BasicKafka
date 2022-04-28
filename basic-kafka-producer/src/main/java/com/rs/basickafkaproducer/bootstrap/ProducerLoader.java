@@ -10,14 +10,6 @@ import org.springframework.stereotype.*;
 @Component
 public class ProducerLoader implements CommandLineRunner {
 
-//    @Autowired
-//    private HelloKafkaProducer helloKafkaProducer;
-//
-//    @Override
-//    public void run(String... args) throws Exception {
-//        helloKafkaProducer.sendHello("Ravi Shekhar " + Math.random());
-//    }
-
     @Autowired
     private KafkaKeyProducer producer;
 
