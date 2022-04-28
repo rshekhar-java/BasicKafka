@@ -18,8 +18,18 @@ public class ProducerLoader implements CommandLineRunner {
 //        helloKafkaProducer.sendHello("Ravi Shekhar " + Math.random());
 //    }
 
+    @Autowired
+    private KafkaKeyProducer producer;
+
     @Override
     public void run(String... args) throws Exception {
+
+        for (int i =0;i< 10000;i++){
+            var key="key-"+(i % 4);
+            var data = "data "+i+ " With key "+key;
+            producer.send(key, data);
+            Thread.sleep(1000);
+        }
     }
 
 }

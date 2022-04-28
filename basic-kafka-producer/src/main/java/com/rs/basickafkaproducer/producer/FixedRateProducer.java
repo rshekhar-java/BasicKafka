@@ -9,7 +9,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 4/26/2022.
  */
-@Service
+//@Service
 public class FixedRateProducer {
 
     @Autowired
