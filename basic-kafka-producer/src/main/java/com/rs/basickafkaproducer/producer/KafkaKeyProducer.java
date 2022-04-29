@@ -7,7 +7,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 4/28/2022.
  */
-@Service
+//@Service
 public class KafkaKeyProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

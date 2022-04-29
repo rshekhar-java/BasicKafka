@@ -8,7 +8,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 4/28/2022.
  */
-@Service
+//@Service
 public class KafkaKeyConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaKeyConsumer.class);

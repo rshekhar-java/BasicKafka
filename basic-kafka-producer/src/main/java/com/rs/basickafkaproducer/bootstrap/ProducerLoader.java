@@ -1,9 +1,14 @@
 package com.rs.basickafkaproducer.bootstrap;
 
+import com.rs.basickafkaproducer.entity.*;
 import com.rs.basickafkaproducer.producer.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.*;
 import org.springframework.stereotype.*;
+
+import java.sql.*;
+import java.time.*;
+
 /**
  * created by rs 4/26/2022.
  */
@@ -11,16 +16,13 @@ import org.springframework.stereotype.*;
 public class ProducerLoader implements CommandLineRunner {
 
     @Autowired
-    private KafkaKeyProducer producer;
+    private EmployeeJsonProducer producer;
 
     @Override
     public void run(String... args) throws Exception {
-
-        for (int i =0;i< 10000;i++){
-            var key="key-"+(i % 4);
-            var data = "data "+i+ " With key "+key;
-            producer.send(key, data);
-            Thread.sleep(1000);
+        for (int i = 0; i < 5; i++) {
+            var employee = new Employee("emp-" + i, "Employee " + i, LocalDate.now());
+            producer.sendMessage(employee);
         }
     }
 
