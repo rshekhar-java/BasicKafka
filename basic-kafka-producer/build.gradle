@@ -20,6 +20,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
