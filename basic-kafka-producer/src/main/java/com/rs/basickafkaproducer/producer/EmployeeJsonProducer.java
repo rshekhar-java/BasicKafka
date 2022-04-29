@@ -22,7 +22,7 @@ public class EmployeeJsonProducer {
     public void sendMessage(Employee emp) throws JsonProcessingException {
 
         var json = objectMapper.writeValueAsString(emp);
-        kafkaTemplate.send("t_employee",json);
+        kafkaTemplate.send("t_employee1",json);
 
     }
 }

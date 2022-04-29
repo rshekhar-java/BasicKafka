@@ -1,5 +1,9 @@
 package com.rs.basickafkaproducer.entity;
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.*;
+import com.rs.basickafkaproducer.json.*;
+
 import java.sql.*;
 import java.time.*;
 
@@ -9,8 +13,13 @@ import java.time.*;
 
 public class Employee {
 
+    @JsonProperty("employee_id")
     private String employeeId;
+
     private String name;
+
+    @JsonProperty("birth_date")
+    @JsonSerialize(using = CustomLocalDateSerializer.class)
     private LocalDate birthDate;
 
     public Employee(String employeeId, String name, LocalDate birthDate) {
