@@ -11,6 +11,9 @@ sourceCompatibility = '11'
 repositories {
     mavenCentral()
 }
+ext{
+    set('jacksonVersion',"2.13.2")
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'

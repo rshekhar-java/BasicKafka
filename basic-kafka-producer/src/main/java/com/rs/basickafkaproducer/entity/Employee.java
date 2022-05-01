@@ -1,6 +1,7 @@
 package com.rs.basickafkaproducer.entity;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.rs.basickafkaproducer.json.*;
 
@@ -10,7 +11,7 @@ import java.time.*;
 /**
  * created by rs 4/28/2022.
  */
-
+@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Employee {
 
     @JsonProperty("employee_id")
@@ -19,6 +20,7 @@ public class Employee {
     private String name;
 
     @JsonProperty("birth_date")
+
     @JsonSerialize(using = CustomLocalDateSerializer.class)
     private LocalDate birthDate;
 
