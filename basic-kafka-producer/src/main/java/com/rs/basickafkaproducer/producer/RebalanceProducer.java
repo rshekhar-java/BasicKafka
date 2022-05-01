@@ -8,7 +8,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 4/29/2022.
  */
-@Service
+//@Service
 public class RebalanceProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

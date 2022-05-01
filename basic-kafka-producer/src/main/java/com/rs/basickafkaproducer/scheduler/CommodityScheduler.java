@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * created by rs 4/28/2022.
  */
-@Service
+//@Service
 public class CommodityScheduler {
 
     private RestTemplate restTemplate = new RestTemplate();

@@ -8,17 +8,18 @@ import org.springframework.kafka.core.*;
 import org.springframework.stereotype.*;
 
 /**
- * created by rs 4/28/2022.
+ * created by rs 5/1/2022.
  */
-//@Service
-public class CommodityProducer {
+@Service
+public class CarLocationProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    private ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    public void sendMessage(Commodity commodity) throws JsonProcessingException {
-        var json = objectMapper.writeValueAsString(commodity);
-        kafkaTemplate.send("t_commodity", commodity.getName(), json);
+    public void send(CarLocation carLocation) throws JsonProcessingException {
+        var json = objectMapper.writeValueAsString(carLocation);
+        kafkaTemplate.send("t-location", json);
     }
 }
