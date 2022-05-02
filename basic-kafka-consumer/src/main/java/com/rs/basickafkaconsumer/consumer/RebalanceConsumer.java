@@ -8,7 +8,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 4/29/2022.
  */
-@Service
+//@Service
 public class RebalanceConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(RebalanceConsumer.class);

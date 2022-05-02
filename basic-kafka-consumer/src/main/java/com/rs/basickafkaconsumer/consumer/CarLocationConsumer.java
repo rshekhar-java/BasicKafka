@@ -11,7 +11,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 5/1/2022.
  */
-@Service
+//@Service
 public class CarLocationConsumer {
     private static final Logger LOG = LoggerFactory.getLogger(CarLocationConsumer.class);
 

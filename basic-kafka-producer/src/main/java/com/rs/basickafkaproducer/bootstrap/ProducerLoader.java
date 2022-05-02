@@ -15,7 +15,7 @@ import java.time.*;
 @Component
 public class ProducerLoader implements CommandLineRunner {
 
-    @Autowired
+/*    @Autowired
     private EmployeeJsonProducer producer;
 
     @Override
@@ -24,6 +24,25 @@ public class ProducerLoader implements CommandLineRunner {
             var employee = new Employee("emp-" + i, "Employee " + i, LocalDate.now());
             producer.sendMessage(employee);
         }
-    }
+    }*/
 
+    @Autowired
+    private PurchaseRequestProducer producerPurchase;
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        var pr1 = new PurchaseRequest(5551,"PR-First",991,"USD");
+        var pr2 = new PurchaseRequest(5552,"PR-Seconf",992,"USD");
+        var pr3 = new PurchaseRequest(5553,"PR-Third",993,"USD");
+        var pr4 = new PurchaseRequest(5554,"PR-Fourth",994,"USD");
+
+        producerPurchase.send(pr1);
+        producerPurchase.send(pr2);
+        producerPurchase.send(pr3);
+        producerPurchase.send(pr4);
+
+        producerPurchase.send(pr1);
+
+    }
 }

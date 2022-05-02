@@ -12,7 +12,7 @@ import java.io.*;
 /**
  * created by rs 4/28/2022.
  */
-@Service
+//@Service
 public class EmployeeJsonConsumer {
 
     private ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();

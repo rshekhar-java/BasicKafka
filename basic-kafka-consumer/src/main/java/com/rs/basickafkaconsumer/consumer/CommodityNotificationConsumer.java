@@ -12,7 +12,7 @@ import java.io.*;
 /**
  * created by rs 4/29/2022.
  */
-@Service
+//@Service
 public class CommodityNotificationConsumer {
 
     private ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();

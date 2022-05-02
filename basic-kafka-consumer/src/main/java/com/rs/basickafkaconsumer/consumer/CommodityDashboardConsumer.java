@@ -13,7 +13,7 @@ import java.util.concurrent.*;
 /**
  * created by rs 4/29/2022.
  */
-@Service
+//@Service
 public class CommodityDashboardConsumer {
 
     private ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
