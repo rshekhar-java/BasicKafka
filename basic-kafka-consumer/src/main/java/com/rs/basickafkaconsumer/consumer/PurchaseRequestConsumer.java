@@ -14,7 +14,7 @@ import java.util.*;
 /**
  * created by rs 5/2/2022.
  */
-@Service
+//@Service
 public class PurchaseRequestConsumer {
     private static final Logger LOG = LoggerFactory.getLogger(PurchaseRequestConsumer.class);
 

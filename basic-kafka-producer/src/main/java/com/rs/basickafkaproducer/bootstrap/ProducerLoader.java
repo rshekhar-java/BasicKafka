@@ -15,6 +15,7 @@ import java.time.*;
 @Component
 public class ProducerLoader implements CommandLineRunner {
 
+    //employee
 /*    @Autowired
     private EmployeeJsonProducer producer;
 
@@ -26,7 +27,8 @@ public class ProducerLoader implements CommandLineRunner {
         }
     }*/
 
-    @Autowired
+    //purchase request
+/*    @Autowired
     private PurchaseRequestProducer producerPurchase;
 
     @Override
@@ -43,6 +45,33 @@ public class ProducerLoader implements CommandLineRunner {
         producerPurchase.send(pr4);
 
         producerPurchase.send(pr1);
+
+    }*/
+
+    //payment request bootstrap
+    @Autowired
+    PaymentRequestProducer paymentProducer;
+
+    @Override
+    public void run(String... args) throws Exception {
+        var paymentRequestAlpha_Transaction1 = new PaymentRequest("Pay-Alpha",551,"USD","Notes Aplha", "Budget reserve");
+        var paymentRequestAlpha_Transaction2 = new PaymentRequest("Pay-Alpha",551,"USD","Notes Aplha", "Approval Workflow");
+        var paymentRequestAlpha_Transaction3 = new PaymentRequest("Pay-Alpha",551,"USD","Notes Aplha", "Push Notification");
+
+        var paymentRequestBeta_Transaction1 = new PaymentRequest("Pay-Beta",552,"USD","Notes Beta", "Budget reserve");
+        var paymentRequestBeta_Transaction2 = new PaymentRequest("Pay-Beta",552,"USD","Notes Beta", "Approval Workflow");
+        var paymentRequestBeta_Transaction3 = new PaymentRequest("Pay-Beta",552,"USD","Notes Beta", "Push Notification");
+
+        paymentProducer.send(paymentRequestAlpha_Transaction1);
+        paymentProducer.send(paymentRequestAlpha_Transaction2);
+        paymentProducer.send(paymentRequestAlpha_Transaction3);
+        paymentProducer.send(paymentRequestBeta_Transaction1);
+        paymentProducer.send(paymentRequestBeta_Transaction2);
+        paymentProducer.send(paymentRequestBeta_Transaction3);
+
+        paymentProducer.send(paymentRequestAlpha_Transaction2);
+        paymentProducer.send(paymentRequestBeta_Transaction3);
+
 
     }
 }
