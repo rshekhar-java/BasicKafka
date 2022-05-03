@@ -68,17 +68,17 @@ public class KafkaConfig {
 		return factory;
 	}
 
-//    @Bean(name = "imageRetryContainerFactory")
-//    public ConcurrentKafkaListenerContainerFactory<Object, Object> imageRetryContainerFactory(
-//            ConcurrentKafkaListenerContainerFactoryConfigurer configurer) {
-//        var factory = new ConcurrentKafkaListenerContainerFactory<Object, Object>();
-//        configurer.configure(factory, consumerFactory());
-//
-//        factory.setCommonErrorHandler(new DefaultErrorHandler(new FixedBackOff(10_000, 3)));
-//
-//        return factory;
-//    }
-//
+    @Bean(name = "imageRetryContainerFactory")
+    public ConcurrentKafkaListenerContainerFactory<Object, Object> imageRetryContainerFactory(
+            ConcurrentKafkaListenerContainerFactoryConfigurer configurer) {
+        var factory = new ConcurrentKafkaListenerContainerFactory<Object, Object>();
+        configurer.configure(factory, consumerFactory());
+
+        factory.setCommonErrorHandler(new DefaultErrorHandler(new FixedBackOff(10_000, 3)));
+
+        return factory;
+    }
+
 //    @Bean(name = "invoiceDltContainerFactory")
 //    public ConcurrentKafkaListenerContainerFactory<Object, Object> invoiceDltContainerFactory(
 //            ConcurrentKafkaListenerContainerFactoryConfigurer configurer, KafkaTemplate<String, String> kafkaTemplate) {
