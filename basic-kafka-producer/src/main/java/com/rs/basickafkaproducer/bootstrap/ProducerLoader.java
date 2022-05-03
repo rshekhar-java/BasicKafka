@@ -130,7 +130,33 @@ public class ProducerLoader implements CommandLineRunner {
     }
 */
 
-    //invoice
+    //image2
+    @Autowired
+    private ImageService imageService;
+
+    @Autowired
+    private Image2Producer producer;
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        var image1 = imageService.generateImage("jpg");
+        var image2 = imageService.generateImage("svg");
+        var image3 = imageService.generateImage("gif");
+        var image4 = imageService.generateImage("gif");
+        var image5 = imageService.generateImage("gif");
+        var image6 = imageService.generateImage("gif");
+
+        producer.send(image1,0);
+        producer.send(image2,0);
+        producer.send(image3,0);
+        producer.send(image4,1);
+        producer.send(image5,1);
+        producer.send(image6,1);
+    }
+
+
+/*    //invoice
     @Autowired
     private InvoiceService invoiceService;
 
@@ -146,6 +172,6 @@ public class ProducerLoader implements CommandLineRunner {
             }
             producer.send(invoice);
         }
-        }
+        }*/
 
     }
