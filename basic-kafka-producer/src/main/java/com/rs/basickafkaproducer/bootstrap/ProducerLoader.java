@@ -48,7 +48,7 @@ public class ProducerLoader implements CommandLineRunner {
 
     }*/
 
-    //payment request bootstrap
+/*    //payment request bootstrap
     @Autowired
     PaymentRequestProducer paymentProducer;
 
@@ -73,5 +73,32 @@ public class ProducerLoader implements CommandLineRunner {
         paymentProducer.send(paymentRequestBeta_Transaction3);
 
 
+    }*/
+
+    //food-order
+    @Autowired
+    private FoodOrderProducer foodOrderProducer;
+
+    //Simple Number
+    @Autowired
+    private SimpleNumberProducer simpleNumberProducer;
+
+    @Override
+    public void run(String... args) throws Exception {
+        var cheeseOrder = new FoodOrder(3,"Cheese");
+        var biryaniOrder = new FoodOrder(10,"Veg Biryani");
+        var choclateOrder = new FoodOrder(5,"Choclate");
+
+        foodOrderProducer.send(cheeseOrder);
+        foodOrderProducer.send(biryaniOrder);
+        foodOrderProducer.send(choclateOrder);
+
+        for (int i = 100;i < 103;i++){
+            var simpleNumber = new SimpleNumber(i);
+            simpleNumberProducer.send(simpleNumber);
+        }
+
     }
+
+
 }

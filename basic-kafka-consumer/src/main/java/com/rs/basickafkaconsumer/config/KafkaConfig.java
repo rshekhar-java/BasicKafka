@@ -3,6 +3,7 @@ package com.rs.basickafkaconsumer.config;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.*;
 import com.rs.basickafkaconsumer.entity.*;
+import com.rs.basickafkaconsumer.error.handler.*;
 import org.apache.kafka.clients.consumer.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.autoconfigure.kafka.*;
@@ -55,16 +56,17 @@ public class KafkaConfig {
 
         return factory;
     }
-//	@Bean(name = "kafkaListenerContainerFactory")
-//	public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerContainerFactory(
-//			ConcurrentKafkaListenerContainerFactoryConfigurer configurer) {
-//		var factory = new ConcurrentKafkaListenerContainerFactory<Object, Object>();
-//		configurer.configure(factory, consumerFactory());
-//
-//		factory.setCommonErrorHandler(new GlobalErrorHandler());
-//
-//		return factory;
-//	}
+
+	@Bean(name = "kafkaListenerContainerFactory")
+	public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerContainerFactory(
+			ConcurrentKafkaListenerContainerFactoryConfigurer configurer) {
+		var factory = new ConcurrentKafkaListenerContainerFactory<Object, Object>();
+		configurer.configure(factory, consumerFactory());
+
+		factory.setCommonErrorHandler(new GlobalErrorHandler());
+
+		return factory;
+	}
 
 //    @Bean(name = "imageRetryContainerFactory")
 //    public ConcurrentKafkaListenerContainerFactory<Object, Object> imageRetryContainerFactory(
