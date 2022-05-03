@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.*;
 import com.rs.basickafkaconsumer.entity.*;
 import com.rs.basickafkaconsumer.error.handler.*;
 import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.autoconfigure.kafka.*;
 import org.springframework.context.annotation.*;
@@ -79,17 +80,18 @@ public class KafkaConfig {
         return factory;
     }
 
-//    @Bean(name = "invoiceDltContainerFactory")
-//    public ConcurrentKafkaListenerContainerFactory<Object, Object> invoiceDltContainerFactory(
-//            ConcurrentKafkaListenerContainerFactoryConfigurer configurer, KafkaTemplate<String, String> kafkaTemplate) {
-//        var factory = new ConcurrentKafkaListenerContainerFactory<Object, Object>();
-//        configurer.configure(factory, consumerFactory());
-//
-//        var recoverer = new DeadLetterPublishingRecoverer(kafkaTemplate);
-//
-//        factory.setCommonErrorHandler(new DefaultErrorHandler(recoverer, new FixedBackOff(1000, 5)));
-//
-//        return factory;
-//    }
+    @Bean(name = "invoiceDltContainerFactory")
+    public ConcurrentKafkaListenerContainerFactory<Object, Object> invoiceDltContainerFactory(
+            ConcurrentKafkaListenerContainerFactoryConfigurer configurer, KafkaTemplate<String, String> kafkaTemplate) {
+        var factory = new ConcurrentKafkaListenerContainerFactory<Object, Object>();
+        configurer.configure(factory, consumerFactory());
+
+        var recoverer = new DeadLetterPublishingRecoverer(kafkaTemplate,
+                (record, ex)-> new TopicPartition("t-invoice-dead",record.partition()));
+
+        factory.setCommonErrorHandler(new DefaultErrorHandler(recoverer, new FixedBackOff(3000, 5)));
+
+        return factory;
+    }
 
 }

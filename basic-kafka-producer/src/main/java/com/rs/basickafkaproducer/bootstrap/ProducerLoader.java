@@ -103,6 +103,7 @@ public class ProducerLoader implements CommandLineRunner {
     }
 */
 
+/*
     //image
     @Autowired
     private ImageService imageService;
@@ -127,5 +128,24 @@ public class ProducerLoader implements CommandLineRunner {
         producer.send(image5,1);
         producer.send(image6,1);
     }
+*/
 
-}
+    //invoice
+    @Autowired
+    private InvoiceService invoiceService;
+
+    @Autowired
+    private InvoiceProducer producer;
+
+    @Override
+    public void run(String... args) throws Exception {
+        for (int i = 0; i < 10; i++) {
+            var invoice = invoiceService.generateInvoice();
+            if(i > 5){
+                invoice.setAmount(0);
+            }
+            producer.send(invoice);
+        }
+        }
+
+    }
