@@ -14,7 +14,7 @@ import org.springframework.stereotype.*;
 /**
  * created by rs 5/3/2022.
  */
-@Service
+//@Service
 public class Image2Consumer {
     private static final Logger LOG = LoggerFactory.getLogger(Image2Consumer.class);
 
